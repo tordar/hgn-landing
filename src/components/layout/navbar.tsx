@@ -5,8 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Input } from "@/components/ui/input";
-import { Search, Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 
 const navigationItems = [
   { name: "Hjem", href: "/" },
@@ -19,15 +18,7 @@ const navigationItems = [
 ];
 
 export function Navbar() {
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      window.location.href = `/search?q=${encodeURIComponent(searchQuery)}`;
-    }
-  };
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -58,80 +49,69 @@ export function Navbar() {
             ))}
           </nav>
 
-          {/* Search and Mobile Menu */}
-          <div className="flex items-center space-x-2">
-            {/* Desktop Search */}
-            <div className="hidden md:flex items-center">
-              {isSearchOpen ? (
-                <form onSubmit={handleSearch} className="flex items-center space-x-2">
-                  <Input
-                    type="search"
-                    placeholder="Søk..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-48"
-                    autoFocus
-                  />
-                  <Button type="submit" size="sm" variant="ghost">
-                    <Search className="h-4 w-4" />
-                  </Button>
-                  <Button
-                    type="button"
-                    size="sm"
-                    variant="ghost"
-                    onClick={() => setIsSearchOpen(false)}
-                  >
-                    <X className="h-4 w-4" />
-                  </Button>
-                </form>
-              ) : (
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setIsSearchOpen(true)}
-                >
-                  <Search className="h-4 w-4" />
-                  <span className="sr-only">Søk</span>
-                </Button>
-              )}
-            </div>
-
-            {/* Mobile Menu */}
-            <Sheet>
+          {/* Mobile Menu */}
+          <div className="flex items-center">
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="sm" className="md:hidden">
                   <Menu className="h-5 w-5" />
                   <span className="sr-only">Åpne meny</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-                <div className="flex flex-col space-y-4 mt-6">
-                  {/* Mobile Search */}
-                  <form onSubmit={handleSearch} className="flex items-center space-x-2">
-                    <Input
-                      type="search"
-                      placeholder="Søk..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="flex-1"
-                    />
-                    <Button type="submit" size="sm">
-                      <Search className="h-4 w-4" />
-                    </Button>
-                  </form>
+              <SheetContent side="right" className="w-[320px] sm:w-[400px] p-0">
+                <div className="flex flex-col h-full">
+                  {/* Header */}
+                  <div className="flex items-center justify-between p-6 border-b">
+                    <div className="flex items-center space-x-3">
+                      <Image
+                        src="/HGN logo.jpg"
+                        alt="HGN Elektro AS"
+                        width={80}
+                        height={40}
+                        className="h-8 w-auto object-contain"
+                      />
+                    </div>
+                  </div>
 
-                  {/* Mobile Navigation */}
-                  <nav className="flex flex-col space-y-3">
-                    {navigationItems.map((item) => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        className="text-lg font-medium transition-colors hover:text-primary py-2"
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
+                  {/* Navigation */}
+                  <nav className="flex-1 px-6 py-8">
+                    <div className="space-y-1">
+                      {navigationItems.map((item, index) => (
+                        <Link
+                          key={item.name}
+                          href={item.href}
+                          onClick={() => setIsOpen(false)}
+                          className="flex items-center px-4 py-3 text-base font-medium rounded-lg transition-colors hover:bg-accent hover:text-accent-foreground group"
+                        >
+                          <span className="flex-1">{item.name}</span>
+                          <div className="w-1 h-6 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </Link>
+                      ))}
+                    </div>
                   </nav>
+
+                  {/* Footer */}
+                  <div className="p-6 border-t bg-muted/30">
+                    <div className="space-y-3">
+                      <div className="text-sm font-medium text-muted-foreground">
+                        Kontakt oss
+                      </div>
+                      <div className="space-y-2">
+                        <a
+                          href="tel:22120003"
+                          className="flex items-center text-sm hover:text-primary transition-colors"
+                        >
+                          📞 22 12 00 03
+                        </a>
+                        <a
+                          href="mailto:post@hgnelektro.no"
+                          className="flex items-center text-sm hover:text-primary transition-colors"
+                        >
+                          ✉️ post@hgnelektro.no
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </SheetContent>
             </Sheet>
