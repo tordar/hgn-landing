@@ -122,9 +122,10 @@ export default function HomePage() {
                 <CardTitle className="text-xl">Næring og offentlig</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <CardDescription className="text-center">
-                  HGN elektro tilbyr alle elektrotjenester til næring- og offentlig sektor. 
-                  Vi har en bred erfaringshistorikk innenfor hoteller, kontor, industri, skoler og butikker.
+                <CardDescription className="text-center space-y-3">
+                  <p>HGN elektro tilbyr alle elektrotjenester til næring- og offentlig sektor.</p>
+                  <p>Vi har en bred erfaringshistorikk innenfor hoteller, kontor, industri, skoler og butikker.</p>
+                  <p>Sammen med våre leverandører og samarbeidspartnere, skreddersyr vi løsninger etter ditt ønske.</p>
                 </CardDescription>
                 <div className="text-center">
                   <Button variant="outline" asChild>
@@ -146,9 +147,9 @@ export default function HomePage() {
                 <CardTitle className="text-xl">Privat</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <CardDescription className="text-center">
-                  Vi tilbyr både service og nyinstallasjon til privatkunder i både nye og gamle hjem. 
-                  Vi er også oppdatert på det siste innen elbil-lading, enøktiltak og smarthusløsninger.
+                <CardDescription className="text-center space-y-3">
+                  <p>Vi tilbyr både service og nyinstallasjon til privatkunder i både nye og gamle hjem.</p>
+                  <p>Vi er også oppdatert på det siste innen elbil-lading, enøktiltak, smarthusløsninger, og trender innen belysning.</p>
                 </CardDescription>
                 <div className="text-center">
                   <Button variant="outline" asChild>
@@ -170,9 +171,9 @@ export default function HomePage() {
                 <CardTitle className="text-xl">Smarthus</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <CardDescription className="text-center">
-                  Et smarthussystem kan hjelpe deg i hverdagen, og gi deg praktisk informasjon om elforbruk og tilstandsstatus. 
-                  Vi kan finne løsningen som passer for deg.
+                <CardDescription className="text-center space-y-3">
+                  <p>Et smarthussystem kan hjelpe deg i hverdagen, og gi deg praktisk informasjon om elforbruk og tilstandsstatus.</p>
+                  <p>Vi kan finne løsningen som passer for deg og dine behov, slik at smarthussystemet gir deg den utnyttelsen du forventer.</p>
                 </CardDescription>
                 <div className="text-center">
                   <Button variant="outline" asChild>
