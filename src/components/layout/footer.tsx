@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { Facebook, Linkedin, Phone, Mail, MapPin } from "lucide-react";
 
@@ -9,7 +10,15 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">HGN Elektro AS</h3>
+            <div className="flex items-center space-x-3">
+              <Image
+                src="/HGN logo.jpg"
+                alt="HGN Elektro AS"
+                width={80}
+                height={40}
+                className="h-8 w-auto object-contain"
+              />
+            </div>
             <p className="text-sm text-muted-foreground italic">
               Vår visjon er å levere elektrotjenester av kvalitet gjennom stolthet til vårt yrke.
             </p>
