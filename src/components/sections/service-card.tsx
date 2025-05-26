@@ -14,8 +14,8 @@ interface ServiceCardProps {
 
 export function ServiceCard({ title, description, image, href, imageAlt }: ServiceCardProps) {
   return (
-    <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-      <div className="relative h-48 w-full overflow-hidden">
+    <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden p-0">
+      <div className="relative h-56 w-full overflow-hidden">
         <Image
           src={image}
           alt={imageAlt || title}
@@ -23,10 +23,10 @@ export function ServiceCard({ title, description, image, href, imageAlt }: Servi
           className="object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </div>
-      <CardHeader>
+      <CardHeader className="px-6 pt-4 pb-2">
         <CardTitle className="text-xl">{title}</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-4 px-6 pb-6 pt-2">
         <CardDescription className="text-sm leading-relaxed">
           {description}
         </CardDescription>
